@@ -38,9 +38,7 @@ def mincostTickets(days, costs):
                 j += 1
             dp[i] = min(dp[i], c + backtrack(j))
         return dp[i]
-        
     
-    backtrack(0)
-    return dp[0]
+    return backtrack(0)
 print(mincostTickets([1,4,6,7,8,20], [2,7,15])) # 11
 print(mincostTickets([1,2,3,4,5,6,7,8,9,10], [2,7,15])) # 13
