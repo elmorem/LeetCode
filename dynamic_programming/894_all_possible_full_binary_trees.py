@@ -46,3 +46,6 @@ class Solution:
                 dp[n] = ans
                 return ans
         return backtrack(n)
+print(Solution().allPossibleFBT(7))
+# print(Solution().allPossibleFBT(5))
+# print(Solution().allPossibleFBT(3))
