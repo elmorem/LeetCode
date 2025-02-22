@@ -20,43 +20,47 @@ If Bob takes the last 5, then the board is [3, 4], and Alice takes 4 to win with
 This demonstrated that taking the first 5 was a winning move for Alice, so we return true.
 
 '''
-class Solution:
-    def stoneGame(self, piles: List[int]) -> bool:
-        # dp solution if there actually was a possibility of alice losing
-        dp  = {} # subarray piles (l, r) --> max alice total
-        # Return the total max that alice can return
-        n = len(piles)
-        def dfs(l,r):
-            if l>r:
-                return 0
-            if(l,r) in dp:
-                return dp[(l,r)]
-            
-            even = True if (r-l)%2 else False
-            left = piles[l] if even else 0 
-            right = piles[r] if even else 0 
-
-            dp[(l,r)] = max(dfs(l+1, r) + left, dfs(l, r-1) + right)
+from typing import List
+def stoneGame(self, piles: List[int]) -> bool:
+    # dp solution if there actually was a possibility of alice losing
+    dp  = {} # subarray piles (l, r) --> max alice total
+    # Return the total max that alice can return
+    n = len(piles)
+    def dfs(l,r):
+        if l>r:
+            return 0
+        if(l,r) in dp:
             return dp[(l,r)]
+        
+        even = True if (r-l)%2 else False
+        left = piles[l] if even else 0 
+        right = piles[r] if even else 0 
 
-        alice = dfs(0, n-1)  
-        bob = sum(piles)- alice
-        print(f"{alice = }")  
-        print(f"{bob = }") 
-        return True if alice > bob else False
-        '''
-        alice = []
-        bob = []
-        n = len(piles)
-        odd, even = 0, 0
-        for i in range(len(piles)):
-            if i % 2 == 0:
-                even += piles[i]
-            else:
-                odd += piles[i]
-        alice.append(max(odd, even))
-        bob.append(min(odd,even))
-        print (f"{sum(bob) = }")
-        print (f"{sum(alice) = }")
-        return False if sum(bob) > sum(alice) else True 
-        '''
+        dp[(l,r)] = max(dfs(l+1, r) + left, dfs(l, r-1) + right)
+        return dp[(l,r)]
+
+    alice = dfs(0, n-1)  
+    bob = sum(piles)- alice
+    return True if alice > bob else False 
+
+print(stoneGame(0, [5,3,4,5])) # True
+print(stoneGame(0, [1,2,3,4,5,6])) # True
+    
+    
+
+'''
+    alice = []
+    bob = []
+    n = len(piles)
+    odd, even = 0, 0
+    for i in range(len(piles)):
+        if i % 2 == 0:
+            even += piles[i]
+        else:
+            odd += piles[i]
+    alice.append(max(odd, even))
+    bob.append(min(odd,even))
+    print (f"{sum(bob) = }")
+    print (f"{sum(alice) = }")
+    return False if sum(bob) > sum(alice) else True 
+'''
