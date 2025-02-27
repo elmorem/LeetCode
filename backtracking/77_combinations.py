@@ -14,6 +14,8 @@ def combine( n: int, k: int) -> List[List[int]]:
             return
         left = x
         still_need = k - len(sol)
+        print(f"{left = }" )
+        print(f"{still_need = }")
         if left > k - len(sol):
             backtrack(x-1)
         sol.append(x)
