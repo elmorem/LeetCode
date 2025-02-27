@@ -5,6 +5,21 @@ You may return the answer in **any order**.
 '''
 from typing import List
 
+### I like the first one better
+class Solution:
+    def combine(self, n: int, k: int) -> List[List[int]]:
+        ans = []
+        def backtrack(start, combo):
+            if len(combo) == k:
+                ans.append(combo[:])
+                return
+            for i in range(start, n+1):
+                combo.append(i)
+                backtrack(i+1, combo)
+                combo.pop()
+        backtrack(1, [])
+        return ans
+
 def combine( n: int, k: int) -> List[List[int]]:
     ans = []
     sol = []
