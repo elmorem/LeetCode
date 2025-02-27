@@ -26,6 +26,8 @@ def combinationSum2(candidates, target):
             return
         prev = -1  # to skip duplicates we initialize a variable to -1
         for i in range(i, n):
+            #if we use a for loop in the recursive call we don't need to call it with
+            # i and i+- 1
             # skip duplicates
             if candidates[i] == prev:
                 continue
