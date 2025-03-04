@@ -13,6 +13,19 @@ Given a string `s` containing only digits, return _all possible valid IP addr
 **Input:** s = "25525511135"
 **Output:** ["255.255.11.135","255.255.111.35"]
 
+> [!NOTE] Algo Summar
+> 1. basic initialization
+> 2. if the string is longer than 12 that means at least one of them is going to be greater than 255
+> 3. recursive function: passes in index, number of dots, curIP returns nothing
+> 	1. Base CAse:  
+> 		1. If we;ve placed 4 dots and i reaches the end of the string, we return the curIP minus the last dot
+> 		2. if we have more than 4 dots return
+> 	2. the loopwe go through each i from i -> min of either i+3 or len(s).
+> 		1. at each if the substring is less than 256 and i == j or s[i] != 0 we backtrack
+> 		2. backtrack(j+1, dots +1, curIP+s[i:j+1] + ".") # add the dot and the substring
+> 	3. call it: backtrack(0, dots=0, curIP="")
+
+
 '''
 def restoreIpAddresses(s):
     ans = []
