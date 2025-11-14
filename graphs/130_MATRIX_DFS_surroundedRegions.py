@@ -19,7 +19,7 @@ To capture a **surrounded region**, replace all `'O'`s with `'X'`s **in-plac
 
 In the above diagram, the bottom region
 '''
-
+from typing import List
 class Solution:
     def solve(self, board: List[List[str]]) -> None:
         n = len(board)
@@ -67,7 +67,25 @@ class Solution:
                     board[row][col] = 'O'
 
 # Test cases
-sol = Solution()
-print(sol.solve([["X","X","X","X"],["X","O","O","X"],["X","X","O","X"],["X","O","X","X"]])) # [["X","X","X","X"],["X","X","X","X"],["X","X","X","X"],["X","O","X","X"]]
-print(sol.solve([["X","X","X","X"],["X","O","X","X"],["X","X","O","X"],["X","O","X","X"]])) # [["X","X","X","X"],["X","O","X","X"],["X","X","O","X"],["X","O","X","X"]]
-print(sol.solve([["X","X","X","X"],["X","O","O","X"],["X","X","O","X"],["X","O","O","X"]])) # [["X","X","X","X"],["X","X","X","X"],["X","X","O","X"],["X","O","O","X"]]
+if __name__ == "__main__":
+    solution = Solution()
+
+    board1 = [["X","X","X","X"],["X","O","O","X"],["X","X","O","X"],["X","O","X","X"]]
+    solution.solve(board1)
+    print(board1)  # Expected output: [["X","X","X","X"],["X","X","X","X"],["X","X","X","X"],["X","O","X","X"]]
+
+    board2 = [["X"]]
+    solution.solve(board2)
+    print(board2)  # Expected output: [["X"]]
+
+    board3 = [["O"]]
+    solution.solve(board3)
+    print(board3)  # Expected output: [["O"]]
+
+    board4 = [["X","O","X"],["O","X","O"],["X","O","X"]]
+    solution.solve(board4)
+    print(board4)  # Expected output: [["X","O","X"],["O","X","O"],["X","O","X"]]
+
+    board5 = [["O","O","O"],["O","O","O"],["O","O","O"]]
+    solution.solve(board5)
+    print(board5)  # Expected output: [["O","O","O"],["O","O","O"],["O","O","O"]]
