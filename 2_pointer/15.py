@@ -1,3 +1,5 @@
+from collections import defaultdict
+from typing import List
 class Solution:
     def threeSum(self, nums: List[int]) -> List[List[int]]:
         n = len(nums)
@@ -21,3 +23,13 @@ class Solution:
                 else:
                     hi -=1
         return list(answer.keys())
+    
+if __name__ == "__main__":
+    solution = Solution()
+    print(solution.threeSum([-1,0,1,2,-1,-4]))  # Expected output: [[-1,-1,2],[-1,0,1]]
+    print(solution.threeSum([]))                 # Expected output: []
+    print(solution.threeSum([0]))                # Expected output: []
+    print(solution.threeSum([1,7,-6,220,-4320]))          # Expected output: []
+    print(solution.threeSum([0,0,0,0]))          # Expected output: [[0,0,0]]       
+    print(solution.threeSum([-2,0,1,1,2]))       # Expected output: [[-2,1,1],[-2,0,2]]
+    print(solution.threeSum([-4,-2,-2,-2,0,1,2,2,2,3,3,4,4,6,6]))  # Expected output: [[-4,-2,6],[-4,0,4],[-4
