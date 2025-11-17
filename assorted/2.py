@@ -1,10 +1,10 @@
 '''
 write a function that, given a string S contains an HTML fragment
-- all HTHML tages except (a) and (ing> are completely removed
-(a href="url"> tage is replaces with (link:url), where
-url is copeid from te orgiinal tage
-(img src = 'url"> tage is replaced with image:url) where url is copied from the original tage
-in the text all symbols except english letters and digits are removed (=except in the URLS from (a> and <img> tages
+- all HTHML tages except (a) and <ing> are completely removed
+(a href="url"> tag is replaced with (link:url), where
+url is copeid from the orgiinal tag
+(img src = 'url"> tage is replaced with image:url) where url is copied from the original tag
+in the text all symbols except english letters and digits are removed (=except in the URLS from (a> and <img> tags
 words are converted to lower case
 all words separated by one space))
 
@@ -16,6 +16,9 @@ def solution(S):
     class Cleaner(HTMLParser):
         def __init__(self):
             super().__init__()
+            # the super() init cal is crutial here because it sets up the parse and makes sure that it get initialized properly
+            # so that. without it, our parser wouldn't work properly
+            #we need these because we are going to initialize a parser and then feed the string to it.  
             self.out = []
         def handle_starttag( self, tag, attrs):
             attrs = dict(attrs)
