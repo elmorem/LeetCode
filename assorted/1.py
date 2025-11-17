@@ -1,12 +1,12 @@
 '''
 write a function names solution(X,Y) that takes as arguments
  distributions of two random variables x and y and returns 
- the possible values of random variales z=xsquared -y, 
- sorted by their probability fromthe least kiukely to 
+ the possible values of random variales z=x^2 -y, 
+ sorted by their probability from the least likely to 
  the most likely.  If seeral possible values
  have equal probability, put the smaller values first.
  a dn y are arrays fo integers in which odd positions represent 
- the vaiables between -1000 and 1000 and the correxponsing even positions 
+ the variables between -1000 and 1000 and the corresponsing even positions 
  are the respective probabilities scaled between 0 and 100.
  x = [-1.50,1,50]
  y = -1,40,1,60]
@@ -14,6 +14,9 @@ write a function names solution(X,Y) that takes as arguments
  z= 2 with probability. =.4
  z = 0 with a probability =.6
 
+ 
+
+ 
 '''
 def solution(X, Y):
     def parse(arr):
