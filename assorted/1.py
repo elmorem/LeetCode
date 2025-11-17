@@ -14,9 +14,14 @@ write a function names solution(X,Y) that takes as arguments
  z= 2 with probability. =.4
  z = 0 with a probability =.6
 
- 
+ note:
+ The arrays contain values where the odd positions represent the variable values
+ and the even positions represent the corresponding probabilities (scaled between 0 and 100).
+ it is these probabilities that should be used to compute the probabilities of z.
+Approach:
+1. we parse the input arrays to get the val/prob pairs
+2. because x and y are independent variables, we need to compute the joint probability of each pair or (x,y)
 
- 
 '''
 def solution(X, Y):
     def parse(arr):
@@ -37,9 +42,12 @@ def solution(X, Y):
             z = x_sq - y_val
             w = x_prob * y_prob
             weights[z] = weights.get(z, 0) + w
-    print(weights)
+            #this is the tricky part right here because different xy values 
+            #can produce the same z value so we have to accumulate the probabilities
+    print(weights.items())
     sorted_items = sorted(weights.items(), key = lambda kv: (kv[1], kv[0]))
-
+    # this basically sorts by probability first then by value
+    # this list comprehension means we are just going to return the z values
     return [z for z,_ in sorted_items]
 
 if __name__ == "__main__":
