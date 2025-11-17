@@ -21,7 +21,7 @@ class WordDistance:
                 j +=1
         return ans
         
-
+# get the list of positions for word1 or an empty list if missing
 
 if __name__ == "__main__":
     wordsDict = ["practice", "makes", "perfect", "coding", "makes"]
